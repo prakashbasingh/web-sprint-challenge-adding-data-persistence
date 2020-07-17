@@ -48,11 +48,19 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain the difference between `Relational Databases` and `SQL`.
 
+Relational database is a type of database which stores related data and data is stored in tabular format grouped into rows and column. SQL is a query language that is used to find data in the database.
+
 2. Why do tables need a `primary key`?
+
+Each row(table) should have a unique value to differentiate from other rows. Without the primary key we can not access the specific rows.
 
 3. What is the name given to a table column that references the primary key on another table.
 
+Foreign key
+
 4. What do we need in order to have a _many to many_ relationship between two tables.
+
+For many to many relationships between two tables, we need to create a new table to join the two tables with foreign key in each initial two tables. 
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
