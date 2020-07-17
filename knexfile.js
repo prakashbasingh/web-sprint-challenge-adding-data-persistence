@@ -13,5 +13,6 @@ module.exports = {
     seed: {
       directory: "./data/seeds"
     },
+    useNullAsDefault: true,
   },
 };

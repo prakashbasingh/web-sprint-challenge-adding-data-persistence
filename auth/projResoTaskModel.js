@@ -46,10 +46,11 @@ function getByResourcesId(id) {
         .first()
 }
 function getProjectResources(project_id) {
-    return db("project_resources")
-        .join("resources", "resources.id", "project_resources.resource_id")
-        .select("resources.id", "resources.name", "resources.description")
-        .where({ project_id })
+    return db("resources as r")
+        .join("project_resources as pr", "r.id", "pr.resource_id")
+        .join("projects as p", "p.id", "pr.project_id")
+        .select("r.id", "r.name", "r.description")
+        .where({ "c.project_id": id })
 }
 
 //for tasks
@@ -68,8 +69,8 @@ function getByTasksId(id) {
         .first()
 }
 function getProjectTasks(project_id) {
-    return db("project_tasks")
-        .join("tasks", "tasks.id", "project_tasks.task_id")
-        .select("tasks.id", "tasks.name", "tasks.description")
+    return db("tasks as t")
+        .join("projects as p", "p.id", "t.project_id" )
+        .select("t.id", "t.note", "t.description", "t.completed", "p.name", "p.description" )
         .where({ project_id })
 }

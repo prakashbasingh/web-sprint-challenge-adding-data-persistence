@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router()
 
-// const Projects = require("./projectsModel.js")
+const Projects = require("./projResoTaskModel.js")
 
 // :::======:::  POST :::======::: \\
 router.post("/", (req, res) => {
@@ -41,5 +41,30 @@ router.get("/:id", (req, res) => {
             res.status(500).json({message: "Project with the ID can not be retrieved"})
         })
 })
+
+
+router.get('/:id/resources', async (req, res) => {
+    const { id } = req.params
+    db.getProjectResources(id)
+        then(projectResources =>{
+            res.status(200).json(projectResources);
+        })
+        .catch (err => {
+      console.log(error)
+      res.status(500).json({ error: "Could not retrieve project resources from database" })
+    })
+  })
+
+router.get('/:id/tasks', async (req, res) => {
+    const { id } = req.params
+    db.getProjectTasks(id)
+        then(projectTasks =>{
+            res.status(200).json(projectTasks);
+        })
+        .catch (err => {
+      console.log(error)
+      res.status(500).json({ error: "Could not retrieve project resources from database" })
+    })
+  })
 
 module.exports = router
